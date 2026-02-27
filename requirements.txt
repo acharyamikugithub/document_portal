@@ -1,9 +1,13 @@
 langchain
 langchain_groq
-
 langchain-openai
 python-dotenv
 langchain_community
 pypdf
 faiss-cpu
+ipykernel
+structlog
+PyMuPDF
+
 -e .
+
