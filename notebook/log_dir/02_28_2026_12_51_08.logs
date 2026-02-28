@@ -1,0 +1,10 @@
+[ 2026-02-28 12:51:16,157] ERROR exception_experiment (line:23)- 
+            Error in [C:\Users\HP\AppData\Local\Temp\ipykernel_7336\3688735736.py] at line [19]
+            Message: division by zero
+            Traceback:
+            Traceback (most recent call last):
+  File "C:\Users\HP\AppData\Local\Temp\ipykernel_7336\3688735736.py", line 19, in <module>
+    a=1/0
+ZeroDivisionError: division by zero
+
+            
