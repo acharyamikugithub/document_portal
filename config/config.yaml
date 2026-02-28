@@ -1,0 +1,18 @@
+faiss_db:
+  collection_name: "document_portal"
+embeding_model:
+  provider: "openai"
+  model_name: "text-embedding-3-large"
+retriever:
+  top_k: 10
+llm:
+  groq:
+    provider: "groq"
+    model_name: "qwen/qwen3-32b"
+    temperature: 0
+    max_output_tokens: 2048
+  openai:
+    provider: "openai"
+    model_name: "gpt-4o"
+    temperature: 0
+    max_output_tokens: 2048
