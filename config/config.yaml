@@ -1,6 +1,6 @@
 faiss_db:
   collection_name: "document_portal"
-embeding_model:
+embedding_model:
   provider: "openai"
   model_name: "text-embedding-3-large"
 retriever:
