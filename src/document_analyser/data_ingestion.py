@@ -4,6 +4,7 @@ import uuid
 from datetime import datetime
 from logger.custom_logger import CustomLogger
 from exception.custom_exception import DocumentPortalException
+from pathlib import Path
 
 
 class DocumentHandler:

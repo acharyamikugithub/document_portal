@@ -50,7 +50,7 @@ class ModelLoader:
         """Load LLM dynamically based on provider in config."""
         log.info("Loading LLM Model")
         llm_block=self.config["llm"]
-        provider_key=os.getenv("LLM_PROVIDER","groq")
+        provider_key=os.getenv("LLM_PROVIDER","openai")
         if provider_key not in llm_block:
             log.error("LLM provider not found in config",provider_key=provider_key)
             raise ValueError(f"provider '{provider_key}' not found in config")
