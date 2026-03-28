@@ -39,6 +39,7 @@ class DocumentIngestion:
                 f.write(reference_file.getbuffer())
             with open(act_path,"wb") as f:
                 f.write(actual_file.getbuffer())
+            return ref_path, act_path
 
         except Exception as e:
             self.log.error(f"Error saving uploaded files: {e}")
@@ -53,12 +54,12 @@ class DocumentIngestion:
                     raise ValueError(f"PDF is encrypted: {pdf_path.name}")
                 all_text=[]
                 for page_num in range(doc.page_count):
-                    doc.load_page(page_num)
+                    page=doc.load_page(page_num)
                     text=page.get_text()#type: ignore
                     if text.strip():
                         all_text.append(f"\n---Page{page_num+1}---\n{text}")
                     self.log.info("PDF read successfully",file=str(pdf_path),pages=len(all_text))
-                    return "\n".join(all_text)
+                return "\n".join(all_text)
 
         except Exception as e:
             self.log.error(f"Error reading PDF: {e}")
