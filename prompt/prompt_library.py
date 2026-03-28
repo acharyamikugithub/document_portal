@@ -1,11 +1,11 @@
 from langchain_core.prompts import ChatPromptTemplate
 
-docuement_analysis_prompt=ChatPromptTemplate.from_template("""
+docuement_analysis_prompt= ChatPromptTemplate.from_template("""
 You are a highly value capable assistant trained to analyze and summarize documents.
 Return ONLY valid JSON matching the exact schema below.
                                         
 {format_instructions}
-Analyze this documents:
+Analyze this document:
 {document_text}
 """)
 document_comparison_prompt= ChatPromptTemplate.from_template("""
