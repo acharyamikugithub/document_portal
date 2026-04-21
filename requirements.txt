@@ -8,6 +8,9 @@ faiss-cpu
 ipykernel
 structlog
 PyMuPDF
+pytest
+langchain-core[tracing]
 
 -e .
+streamlit
 
