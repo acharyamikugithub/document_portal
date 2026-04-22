@@ -1,0 +1,8 @@
+class DocumentIngestor:
+    def __init__(self):
+        pass
+    def ingest(self):
+        pass
+    def _create_retriever(self,documents):
+        pass
+    
