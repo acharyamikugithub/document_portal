@@ -8,7 +8,7 @@ class ConversationRAG:
     def _load_llm(self):
         pass
     @staticmethod
-    def _format_docs(self):
+    def _format_docs(docs):
         pass
     def _build_lcel_chain(self):
         pass
