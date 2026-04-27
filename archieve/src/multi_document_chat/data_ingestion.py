@@ -48,13 +48,13 @@ class DocumentIngestor:
             for uploaded_file in uploaded_files:
                 ext=Path(uploaded_file.filename).suffix.lower()
                 if ext not in self.SUPPORTED_EXTENSIONS:
-                    self.log.warning("Unsupported file skipped",filename=uploaded_file.name)
+                    self.log.warning("Unsupported file skipped",filename=uploaded_file.filename)
                     continue
                 unique_filename=f"{uuid.uuid4().hex[:8]}{ext}"
                 temp_path=self.session_temp_dir/unique_filename
                 with open(temp_path,"wb") as f:
                     f.write(uploaded_file.file.read())
-                self.log.info("File Saved for ingestion",filename=uploaded_file.name,saved_as=str(temp_path),session_id=self.session_id)
+                self.log.info("File Saved for ingestion",filename=uploaded_file.filename,saved_as=str(temp_path),session_id=self.session_id)
                 if ext==".pdf":
                     loader=PyPDFLoader(str(temp_path))
                 elif ext==".docx":
@@ -62,16 +62,16 @@ class DocumentIngestor:
                 elif ext==".txt":
                     loader=TextLoader(str(temp_path),encoding="utf-8")
                 else:
-                    self.log.warning("No loader for file, skipping",filename=uploaded_file.name)
+                    self.log.warning("No loader for file, skipping",filename=uploaded_file.filename)
                     continue
                 docs=loader.load()
                 documents.extend(docs)
-                if not documents:
-                    raise DocumentPortalException("No valid documents loaded",sys)
-                self.log.info("All documents loaded",total_docs=len(documents),session_id=self.session_id)
-                return self._create_retriever(documents)
+            if not documents:
+                raise DocumentPortalException("No valid documents loaded",sys)
+            self.log.info("All documents loaded",total_docs=len(documents),session_id=self.session_id)
+            return self._create_retriever(documents)
         except Exception as e:
-            self.log.erorr("Failed to ingest files",error=str(e))
+            self.log.error("Failed to ingest files",error=str(e))
             raise DocumentPortalException("Ingestion error in DocumentIngestor",sys)
         
     def _create_retriever(self,documents):
